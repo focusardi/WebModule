@@ -1,4 +1,4 @@
-package com.template.misc;
+package com.main.misc;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

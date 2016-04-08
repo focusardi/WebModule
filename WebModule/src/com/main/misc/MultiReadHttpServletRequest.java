@@ -1,4 +1,4 @@
-package com.template.misc;
+package com.main.misc;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
