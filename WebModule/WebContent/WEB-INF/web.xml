@@ -4,7 +4,19 @@
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-  
+	
+	<!-- Load DB config -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/conf/db-config.xml
+		</param-value>		
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener> 
+	
+	<!-- Load spring config -->
 	<servlet>
         <servlet-name>springmvc</servlet-name>
         <servlet-class>
@@ -25,6 +37,7 @@
 		<url-pattern>*.png</url-pattern>
 	</servlet-mapping>
 	
+	
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -42,6 +55,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
+	<!-- read multi request body -->
 	<filter>
 	    <filter-name>multireadFilter</filter-name>
 	    <filter-class>com.main.misc.MultiReadServletFilter</filter-class>

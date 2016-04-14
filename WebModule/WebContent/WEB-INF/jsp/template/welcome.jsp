@@ -8,5 +8,6 @@
 </head>
 <body>
 welcome controller
+${message}
 </body>
 </html>
