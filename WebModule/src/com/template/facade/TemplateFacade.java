@@ -61,7 +61,11 @@ public class TemplateFacade extends BaseFacade {
 		List<?> reList = objDB.selectList("com.template.service.configList.getConfigList", map);
 		
 		System.out.println(reList.size());
-		throw new Exception("123");
+		
+		test();
+	}
+	
+	public void test() {
 		
 	}
 }

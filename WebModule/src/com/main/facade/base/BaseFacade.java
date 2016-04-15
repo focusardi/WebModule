@@ -1,14 +1,17 @@
 package com.main.facade.base;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.main.db.base.DBAccess;
+import com.main.util.WebModuleUtil;
 
 public class BaseFacade {
 	
@@ -25,7 +28,11 @@ public class BaseFacade {
 
 	public void setRequest(HttpServletRequest request) {
 		this.request = request;		
-		setRequestMap(convertRequestDataToMap(this.request));		
+		setRequestMap(convertRequestDataToMap(this.request));
+		
+		if (getParameter("pageNum") != null && getParameter("pageSize") != null) {
+			
+		}		
 	}
 
 	public void setPageNum(int pageNum) {
@@ -61,6 +68,21 @@ public class BaseFacade {
 	}
 	
 	public String getParameter(String name) {
-		return this.requestMap.get(name).toString();
+		
+		Object value = this.requestMap.get(name);
+		if (value == null) {
+			return null;
+		}
+
+		if (value instanceof Short || value instanceof Integer) {
+			return String.valueOf(value);
+		} else if (value instanceof BigDecimal) {
+			double b = ((BigDecimal) value).setScale(2, BigDecimal.ROUND_UNNECESSARY).doubleValue();
+
+			return String.valueOf(b);
+		} else {
+			return StringUtils.defaultString((String) value, "");
+		}
+		
 	}
 }
