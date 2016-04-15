@@ -30,4 +30,14 @@ public class TemplateController {
 		
 		
 	}
+	
+	@RequestMapping("/grid")
+	public ModelAndView grid(HttpServletRequest request, HttpServletResponse response) throws Exception {		
+		return new ModelAndView("template/grid");		
+	}
+	
+	@RequestMapping("/gridData")
+	public String gridData(HttpServletRequest request, HttpServletResponse response) throws Exception {		
+		return null;
+	}
 }

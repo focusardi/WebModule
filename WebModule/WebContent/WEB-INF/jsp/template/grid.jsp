@@ -8,8 +8,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-welcome controller
-${message}
 
+
+<script>
+
+	
+
+	ReactDOM.render(
+		<UserGist source="gridData" />,
+		document.getElementById("griddiv")
+	);
+</script>
+
+<div id="griddiv">
+</div>
 </body>
 </html>

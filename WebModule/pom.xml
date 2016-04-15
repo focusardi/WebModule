@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <properties>
-    <spring_version>4.2.5.RELEASE</spring_version>
+    <spring_version>4.1.9.RELEASE</spring_version>
     <mybatis_version>3.2.8</mybatis_version>
     <spring_mybatis_version>1.2.5</spring_mybatis_version>    
   </properties>
