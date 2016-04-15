@@ -16,7 +16,12 @@ public class DBAccess {
 	public List<HashMap<?, ?>> selectList(String nameSpace, HashMap<String, Object> parameterMap) {
 		
 		SqlSession session = sqlSessionFactoryCustom.openSession();
-		return session.selectList(nameSpace, parameterMap, new RowBounds(1,15));
-		//return session.selectList(nameSpace, parameterMap);
+		//return session.selectList(nameSpace, parameterMap, new RowBounds(1,15));
+		return session.selectList(nameSpace, parameterMap);
+	}
+	
+	public List<HashMap<?, ?>> selectPageList(String nameSpace, HashMap<String, Object> parameterMap, int beginIndex, int endIndex) {
+		SqlSession session = sqlSessionFactoryCustom.openSession();
+		return session.selectList(nameSpace, parameterMap, new RowBounds(beginIndex, endIndex));
 	}
 }
