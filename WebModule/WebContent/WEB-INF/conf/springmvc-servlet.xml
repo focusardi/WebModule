@@ -19,6 +19,7 @@
  	<!-- aop -->
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	<bean id="controllerAOP" class="com.main.aop.ControllerAOP"></bean>
+	<bean id="facadeAOP" class="com.main.aop.FacadeAOP"></bean>
 	<bean id="objDB" class="com.main.db.base.DBAccess"></bean>
 	
 	<!-- bean package -->
