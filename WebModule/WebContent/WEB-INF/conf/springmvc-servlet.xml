@@ -45,7 +45,7 @@
 
 	
 	<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" cache-period="31556926"/>
-    <mvc:default-servlet-handler />
+    <!-- <mvc:default-servlet-handler /> -->
 	<mvc:annotation-driven />
 	
 </beans>

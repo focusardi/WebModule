@@ -13,14 +13,14 @@ public class DBAccess {
 	@Autowired
 	SqlSessionFactory sqlSessionFactoryCustom;
 	
-	public List<HashMap<?, ?>> selectList(String nameSpace, HashMap<String, Object> parameterMap) {
+	public List<HashMap<String, Object>> selectList(String nameSpace, HashMap<String, Object> parameterMap) {
 		
 		SqlSession session = sqlSessionFactoryCustom.openSession();
 		//return session.selectList(nameSpace, parameterMap, new RowBounds(1,15));
 		return session.selectList(nameSpace, parameterMap);
 	}
 	
-	public List<HashMap<?, ?>> selectPageList(String nameSpace, HashMap<String, Object> parameterMap, int beginIndex, int endIndex) {
+	public List<HashMap<String, Object>> selectPageList(String nameSpace, HashMap<String, Object> parameterMap, int beginIndex, int endIndex) {
 		SqlSession session = sqlSessionFactoryCustom.openSession();
 		return session.selectList(nameSpace, parameterMap, new RowBounds(beginIndex, endIndex));
 	}

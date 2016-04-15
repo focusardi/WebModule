@@ -1,26 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../../resources/pages/pagebase.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-
-<script>
-
-	
+<div id="griddiv"></div>
+<script type="text/babel">
+	var DataGrid = React.createClass({
+		
+		getInitialState: function() {
+			return {
+			CONFIG_NAME: 'init',
+			CONFIG_VALUE: ''
+			};
+		},
+		
+		componentDidMount: function() {		
+			this.serverRequest = $.get(this.props.source, function (result) {
+				var jsonResult = $.parseJSON(result);
+				//console.log(jsonResult);
+				var firstData = jsonResult[0];
+				this.setState({
+					CONFIG_NAME: firstData.CONFIG_NAME,
+					CONFIG_VALUE: firstData.CONFIG_VALUE
+				});
+			}.bind(this));
+		},
+		
+		componentWillUnmount: function() {
+			this.serverRequest.abort();
+		},
+		
+		render: function() {
+			return (<div>{this.state.CONFIG_NAME} : {this.state.CONFIG_VALUE}</div>);
+		}
+		
+		
+	});
 
 	ReactDOM.render(
-		<UserGist source="gridData" />,
+		<DataGrid source="gridData" />,
 		document.getElementById("griddiv")
 	);
 </script>
-
-<div id="griddiv">
-</div>
-</body>
-</html>

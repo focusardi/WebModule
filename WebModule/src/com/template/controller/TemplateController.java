@@ -6,9 +6,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.template.facade.TemplateFacade;
+
+import net.sf.json.JSONSerializer;
 
 @Controller
 public class TemplateController {
@@ -36,8 +39,11 @@ public class TemplateController {
 		return new ModelAndView("template/grid");		
 	}
 	
-	@RequestMapping("/gridData")
-	public String gridData(HttpServletRequest request, HttpServletResponse response) throws Exception {		
-		return null;
+	@ResponseBody
+	@RequestMapping("/gridData")	
+	public String gridData(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		//JSONSerializer serializer = new JSONSerializer();
+		return JSONSerializer.toJSON(templateFacade.getGridData()).toString();
 	}
 }
