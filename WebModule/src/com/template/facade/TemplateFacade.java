@@ -14,22 +14,28 @@ import com.main.db.dao.WmSysConfigMapper;
 import com.main.db.model.WmSysConfig;
 import com.main.db.model.WmSysConfigExample;
 import com.main.db.model.WmSysConfigKey;
+import com.main.facade.base.BaseFacade;
 
 @Service
 @Scope("prototype")
-public class TemplateFacade {
+public class TemplateFacade extends BaseFacade {
 	
 	@Autowired
 	WmSysConfigMapper wmSysConfigMapper;
-	
-	@Autowired
-	DBAccess objDB;
 	
 //	@Autowired
 //	SqlSessionFactory sqlSessionFactoryCustom;
 	
 	public void doList() throws Exception {
 		System.out.println("TemplateFacade");
+		if (request == null) {
+			System.out.println("request is null");
+			
+		} else {
+			System.out.println(request);
+			System.out.println(request.getParameter("pageNum"));
+			System.out.println(request.getAttribute("TEST"));
+		}
 		
 		WmSysConfigKey k = new WmSysConfigKey();
 		k.setConfigName("AP_NAME");

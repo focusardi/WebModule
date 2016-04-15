@@ -14,9 +14,10 @@ public class ControllerAOP {
 	}
 	
 	@Around("pointcut()")
-	public Object myAroundAdvice(ProceedingJoinPoint jionpoint) throws Throwable {
-		System.out.println("Controller AoP================================================BEGIN");		
-		Object o = jionpoint.proceed();
+	public Object myAroundAdvice(ProceedingJoinPoint joinPoint) throws Throwable {
+		System.out.println("Controller AoP================================================BEGIN");
+		
+		Object o = joinPoint.proceed();
 		System.out.println("Controller AoP================================================END");	
 		
 		return o;

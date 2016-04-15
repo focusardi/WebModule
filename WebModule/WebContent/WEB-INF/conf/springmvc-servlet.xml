@@ -24,6 +24,7 @@
 	
 	<!-- bean package -->
 	<context:component-scan base-package="com.main.db.base" />
+	<context:component-scan base-package="com.main.facade.base" />
 	
 	<context:component-scan base-package="com.template.controller" />
  	<context:component-scan base-package="com.template.facade" />

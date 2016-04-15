@@ -19,7 +19,7 @@ public class TemplateController {
 	@RequestMapping("/welcome")
 	public ModelAndView helloWorld(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("123333");
-		
+		request.setAttribute("TEST", "TESTATT");
 		
 		templateFacade.doList();
 		
