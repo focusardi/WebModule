@@ -8,5 +8,6 @@
 				AND CONFIG_NAME = #{CONFIG_NAME}
 			</if>
 		</where>
+		ORDER BY CONFIG_NAME
 	</select>
 </mapper>

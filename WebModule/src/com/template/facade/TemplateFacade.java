@@ -47,7 +47,7 @@ public class TemplateFacade {
 		System.out.println("insert:" + r);
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("CONFIG_NAME", "AP_NAME");
+		//map.put("CONFIG_NAME", "AP_NAME");
 		
 //		SqlSession session = sqlSessionFactoryCustom.openSession();
 //		
@@ -55,7 +55,7 @@ public class TemplateFacade {
 		
 		List<?> reList = objDB.selectList("com.template.service.configList.getConfigList", map);
 		
-		System.out.println("123");
+		System.out.println(reList.size());
 		
 	}
 }

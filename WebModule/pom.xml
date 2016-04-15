@@ -102,6 +102,13 @@
 			<version>${spring_mybatis_version}</version>
 		</dependency>
 		
+		<!-- 分頁 -->
+		<dependency>
+		    <groupId>com.github.pagehelper</groupId>
+		    <artifactId>pagehelper</artifactId>
+		    <version>4.0.1</version>
+		</dependency>
+		
 		<!-- log4j -->
 		<dependency>
 			<groupId>log4j</groupId>
