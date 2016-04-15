@@ -33,7 +33,10 @@ public class TemplateFacade extends BaseFacade {
 			
 		} else {
 			System.out.println(request);
+			System.out.println(requestMap);			
 			System.out.println(request.getParameter("pageNum"));
+			System.out.println(getParameter("pageNum"));
+			
 			System.out.println(request.getAttribute("TEST"));
 		}
 		
