@@ -29,7 +29,7 @@ public class BaseFacade {
 	}
 
 	public void setPageNum(int pageNum) {
-		this.pageNum = pageNum;
+		this.pageNum = pageNum;		
 	}
 
 	public void setPageSize(int pageSize) {
@@ -45,9 +45,7 @@ public class BaseFacade {
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		
 		if (request.getMethod().equals("POST") && request.getContentType().startsWith("multipart/form-data")) {
-			//System.out.println(request.getAttribute("acerVMap"));
-			
-			dataMap = (HashMap<String, Object>)request.getAttribute("acerVMap");
+			dataMap = (HashMap<String, Object>)request.getAttribute("multiReadMap");
 		} else {
 			Map<String, String[]> requestMap = request.getParameterMap();			
 			
@@ -57,8 +55,7 @@ public class BaseFacade {
 				} else {
 					dataMap.put(key, requestMap.get(key)[0]);
 				}
-			}
-			
+			}			
 		}		
 		return dataMap;
 	}

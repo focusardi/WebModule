@@ -3,13 +3,9 @@ package com.template.facade;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
-
-import com.main.db.base.DBAccess;
 import com.main.db.dao.WmSysConfigMapper;
 import com.main.db.model.WmSysConfig;
 import com.main.db.model.WmSysConfigExample;
@@ -65,6 +61,7 @@ public class TemplateFacade extends BaseFacade {
 		List<?> reList = objDB.selectList("com.template.service.configList.getConfigList", map);
 		
 		System.out.println(reList.size());
+		throw new Exception("123");
 		
 	}
 }

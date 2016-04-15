@@ -36,7 +36,7 @@ public class MultiReadServletFilter implements Filter {
 		MultiReadHttpServletRequest multiReadRequest = new MultiReadHttpServletRequest((HttpServletRequest) request);
 		
 		if (multiReadRequest.getMethod().equals("POST") && multiReadRequest.getContentType().startsWith("multipart/form-data")) {
-			//request.setAttribute("acerVMap", getFormParameter(multiReadRequest));			
+			request.setAttribute("multiReadMap", getFormParameter(multiReadRequest));			
 		}
 		
 		chain.doFilter(multiReadRequest, response);
