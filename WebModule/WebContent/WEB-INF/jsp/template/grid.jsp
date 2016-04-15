@@ -8,19 +8,22 @@
 		getInitialState: function() {
 			return {
 			CONFIG_NAME: 'init',
-			CONFIG_VALUE: ''
+			CONFIG_VALUE: 'init'
 			};
 		},
 		
 		componentDidMount: function() {		
 			this.serverRequest = $.get(this.props.source, function (result) {
 				var jsonResult = $.parseJSON(result);
-				//console.log(jsonResult);
+				console.log(jsonResult);
 				var firstData = jsonResult[0];
 				this.setState({
 					CONFIG_NAME: firstData.CONFIG_NAME,
 					CONFIG_VALUE: firstData.CONFIG_VALUE
 				});
+
+				
+
 			}.bind(this));
 		},
 		
