@@ -102,6 +102,13 @@
 			<version>${spring_mybatis_version}</version>
 		</dependency>
 		
+		<!-- log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		
 		<!-- for jenkins maven build -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
