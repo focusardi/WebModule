@@ -61,7 +61,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property ref="dataSource" name="dataSource" />
 		<property name="mapperLocations"
-			value="classpath*:com/main/db/sqlxml/*Mapper.xml" />
+			value="classpath*:com/main/db/sqlxml/*Mapper.xml" />			
 		<!-- <property name="configLocation" value="/WEB-INF/conf/mybatis-config.xml" /> -->				
 	</bean>
 	
@@ -70,5 +70,17 @@
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 		<property name="basePackage" value="com.main.db.dao" />
 	</bean> 
+	
+	
+	<bean id="sqlSessionFactoryCustom" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property ref="dataSource" name="dataSource" />
+		<property name="mapperLocations"
+			value="classpath*:com/template/service/*.xml" />				
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryCustom" />
+		<property name="basePackage" value="com.main.db.base" />
+	</bean>
 	
 </beans>
