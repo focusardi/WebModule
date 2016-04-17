@@ -46,4 +46,9 @@ public class TemplateController {
 		//JSONSerializer serializer = new JSONSerializer();
 		return JSONSerializer.toJSON(templateFacade.getGridData()).toString();
 	}
+	
+	@RequestMapping("/gradleTest")
+	public ModelAndView gradleTest(HttpServletRequest request, HttpServletResponse response) throws Exception {		
+		return new ModelAndView("template/gradleTest");		
+	}
 }

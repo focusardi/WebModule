@@ -71,6 +71,7 @@ public class TemplateFacade extends BaseFacade {
 	
 	public List<HashMap<String, Object>> getGridData() {
 		
-		return objDB.selectList("com.template.service.configList.getConfigList", null);
+		return objDB.selectPageList("com.template.service.configList.getConfigList", null, pageNum, pageSize);
+		
 	}
 }

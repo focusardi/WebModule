@@ -20,8 +20,7 @@ public class BaseFacade {
 	
 	protected HttpServletRequest request;
 	
-	protected int pageNum;
-	
+	protected int pageNum;	
 	protected int pageSize;
 	
 	protected HashMap<String, Object> requestMap;
@@ -32,8 +31,24 @@ public class BaseFacade {
 		
 		if (getParameter("pageNum") != null && getParameter("pageSize") != null) {
 			
+			
+			if ("".equals(getParameter("pageNum"))) {
+				setPageNum(0);
+			} else {
+				setPageNum(Integer.parseInt(getParameter("pageNum")));
+			}
+			if ("".equals(getParameter("pageSize"))) {
+				setPageSize(0);
+			} else {
+				setPageSize(Integer.parseInt(getParameter("pageSize")));
+			}
+			
+		} else {
+			setPageNum(0);
+			setPageSize(0);
 		}		
 	}
+	
 
 	public void setPageNum(int pageNum) {
 		this.pageNum = pageNum;		
