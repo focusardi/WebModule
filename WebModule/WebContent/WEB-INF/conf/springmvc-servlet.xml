@@ -21,6 +21,9 @@
 	<bean id="controllerAOP" class="com.main.aop.ControllerAOP"></bean>
 	<bean id="facadeAOP" class="com.main.aop.FacadeAOP"></bean>
 	<bean id="objDB" class="com.main.base.DBAccess"></bean>
+	<bean id="dBAccessPageListAOP" class="com.main.aop.DBAccessPageListAOP"></bean>
+	
+	
 	
 	<!-- bean package -->
 	<context:component-scan base-package="com.main.base" />

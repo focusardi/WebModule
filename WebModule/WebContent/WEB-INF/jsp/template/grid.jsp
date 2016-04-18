@@ -8,9 +8,9 @@
 var CommentList = React.createClass({
   render: function() {
     
-	//console.log(this.props.data);
+	console.log(this.props.data);
 	
-	var commentNodes = this.props.data.map(function(comment) {
+	var commentNodes = this.props.data.pageData.map(function(comment) {
       return (
         <tr><td>{comment.CONFIG_NAME}</td><td>{comment.CONFIG_VALUE}</td></tr>
       );
@@ -28,7 +28,7 @@ var CommentList = React.createClass({
 var CommentForm = React.createClass({
   render: function() {
 
-console.log(this.props.sumbitFunction);
+//console.log(this.props.sumbitFunction);
     return (
       <form className="commentForm" id="commentForm" >
         <input type="text" placeholder="pageSize" name="pageSize" />
@@ -41,7 +41,7 @@ console.log(this.props.sumbitFunction);
 
 var CommentBox = React.createClass({
   getInitialState: function() {
-    return {data: []};
+    return {data: {pageData:[]}};
   },
   componentDidMount: function() {
     $.ajax({

@@ -1,5 +1,9 @@
 package com.template.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,12 +14,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageInfo;
+import com.main.base.BaseController;
+import com.main.base.BaseFacade;
 import com.template.facade.TemplateFacade;
 
 import net.sf.json.JSONSerializer;
 
 @Controller
-public class TemplateController {
+public class TemplateController extends BaseController {
 	
 	@Autowired
 	TemplateFacade templateFacade;
@@ -42,10 +48,17 @@ public class TemplateController {
 	
 	@ResponseBody
 	@RequestMapping("/gridData")	
-	public String gridData(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+	public String gridData(HttpServletRequest request, HttpServletResponse response) throws Exception {		
 		//JSONSerializer serializer = new JSONSerializer();
-		return JSONSerializer.toJSON(templateFacade.getGridData()).toString();
+		//return JSONSerializer.toJSON(templateFacade.getGridData()).toString();
+		List<HashMap<String, Object>> data = new ArrayList<HashMap<String, Object>>();
+		data.addAll(templateFacade.getGridData());
+				
+		HashMap<String, Object> ss = new HashMap<String, Object>();
+		ss.put("123", 12333);
+		data.add(ss);
+		return returnJsonList(data);
+		//return returnJsonList(templateFacade.getGridData());
 	}
 	
 	@RequestMapping("/gradleTest")

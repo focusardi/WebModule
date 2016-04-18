@@ -44,7 +44,7 @@ public class FacadeAOP {
 		BaseFacade target = (BaseFacade)joinPoint.getTarget();
 		target.setRequest(request);
 		
-		Object o = joinPoint.proceed();
+		Object o = joinPoint.proceed();		
 		System.out.println("Facade AoP================================================END");			
 		return o;
 	}
