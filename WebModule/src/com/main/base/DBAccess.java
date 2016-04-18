@@ -19,25 +19,25 @@ public class DBAccess {
 	public List<HashMap<String, Object>> selectList(String nameSpace, HashMap<String, Object> parameterMap) throws Exception {
 		
 		SqlSession session = sqlSessionFactory.openSession();
+		List<HashMap<String, Object>> returnData = null;
 		
-		//return session.selectList(nameSpace, parameterMap, new RowBounds(1,15));
-		List<HashMap<String, Object>> returnData = session.selectList(nameSpace, parameterMap);
-		session.close();
+		try {
+			returnData = session.selectList(nameSpace, parameterMap);
+		} finally {
+			session.close();
+		}
+		
 		return returnData;
 	}
 	
 	public List<HashMap<String, Object>> selectPageList(String nameSpace, HashMap<String, Object> parameterMap, int pageNum, int pageSize) throws Exception {
+		
 		SqlSession session = sqlSessionFactory.openSession();
 		List<HashMap<String, Object>> returnData = null;
 		
 		try {
 			PageHelper.startPage(pageNum, pageSize);
-			List<HashMap<String, Object>> data = session.selectList(nameSpace, parameterMap);
-			
-			returnData = data;
-			
-			//returnData = session.selectList(nameSpace, parameterMap, new RowBounds(pageNum, pageSize));
-
+			returnData = session.selectList(nameSpace, parameterMap);						
 		} finally {
 			session.close();
 		}
