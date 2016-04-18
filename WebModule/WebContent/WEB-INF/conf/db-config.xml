@@ -28,13 +28,13 @@
 			<value>Webmodule123</value>
 		</property>
 		<property name="initialSize">
-			<value>5</value>
+			<value>2</value>
 		</property>
 		<property name="maxActive">
 			<value>10</value>
 		</property>
 		<property name="maxIdle">
-			<value>1</value>
+			<value>4</value>
 		</property>
 		<property name="maxWait">
 			<value>-1</value>
