@@ -3,9 +3,10 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-<!-- <settings>
-    
-</settings> -->
+	<settings>
+	    <!-- 在null时也调用 setter,适应于返回Map,3.2版本以上可用 -->  
+		<setting name="callSettersOnNulls" value="true"/>  
+	</settings>
 
 	<plugins>
 		<!-- 

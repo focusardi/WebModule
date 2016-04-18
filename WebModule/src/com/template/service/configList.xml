@@ -12,7 +12,7 @@
 	</select>
 	
 	<select id="getConfigJoinCodeList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		SELECT CONFIG_NAME, CONFIG_VALUE FROM WM_SYS_CONFIG A1
+		SELECT CONFIG_NAME, CONFIG_VALUE, CONFIG_DESCRIPTION FROM WM_SYS_CONFIG A1
 		LEFT JOIN WM_SYS_CODE A2 ON A1.CONFIG_NAME = A2.CODE_VALUE
 		<where>
 			<if test="CONFIG_NAME != null and CONFIG_NAME != ''">
@@ -22,4 +22,31 @@
 		ORDER BY A1.CONFIG_NAME
 	</select>
 	
+	<update id = "updateConfigTest" parameterType="java.util.HashMap">
+		update WM_SYS_CONFIG
+		<set>
+			<if test="CONFIG_NAME != null">
+				CONFIG_NAME = #{CONFIG_NAME},
+			</if>
+			<if test="CONFIG_VALUE != null">
+				CONFIG_VALUE = #{CONFIG_VALUE},
+			</if>
+			<if test="CONFIG_DESCRIPTION != null">
+				CONFIG_DESCRIPTION = #{CONFIG_DESCRIPTION},
+			</if>
+		</set>
+		<where>
+			CONFIG_NAME = #{CONFIG_NAME}
+		</where>		
+	</update>
+	
+	<update id = "updateConfigBatchTest" parameterType="java.util.HashMap">
+		update WM_SYS_CONFIG
+		SET CONFIG_VALUE = 'batchTest'
+		WHERE CONFIG_NAME IN
+		<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+			#{item}		
+		</foreach>
+		
+	</update>
 </mapper>

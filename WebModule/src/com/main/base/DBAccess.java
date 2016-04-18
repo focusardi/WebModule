@@ -39,9 +39,52 @@ public class DBAccess {
 			PageHelper.startPage(pageNum, pageSize);
 			returnData = session.selectList(nameSpace, parameterMap);						
 		} finally {
-			session.close();
+			session.close();			
 		}
 		
 		return returnData;
 	}
+	
+	public int insert(String nameSpace, HashMap<String, Object> parameterMap) throws Exception {
+		
+		SqlSession session = sqlSessionFactory.openSession();
+		int returnInt = 0;
+		
+		try {
+			returnInt = session.insert(nameSpace, parameterMap);		
+		} finally {
+			session.close();
+		}
+		
+		return returnInt;
+	}
+	
+	public int update(String nameSpace, HashMap<String, Object> parameterMap) throws Exception {
+		
+		SqlSession session = sqlSessionFactory.openSession();
+		int returnInt = 0;
+		
+		try {
+			returnInt = session.update(nameSpace, parameterMap);		
+		} finally {
+			session.close();
+		}
+		
+		return returnInt;
+	}
+	
+	public int delete(String nameSpace, HashMap<String, Object> parameterMap) throws Exception {
+		
+		SqlSession session = sqlSessionFactory.openSession();
+		int returnInt = 0;
+		
+		try {
+			returnInt = session.delete(nameSpace, parameterMap);		
+		} finally {
+			session.close();
+		}
+		
+		return returnInt;
+	}
+	
 }
