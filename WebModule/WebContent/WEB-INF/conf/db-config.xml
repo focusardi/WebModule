@@ -81,7 +81,7 @@
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryCustom" />
-		<property name="basePackage" value="com.main.db.base" />
+		<property name="basePackage" value="com.main.base" />
 	</bean>
 	
 </beans>

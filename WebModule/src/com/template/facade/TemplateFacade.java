@@ -6,11 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageInfo;
+import com.main.base.BaseFacade;
 import com.main.db.dao.WmSysConfigMapper;
 import com.main.db.model.WmSysConfig;
 import com.main.db.model.WmSysConfigExample;
 import com.main.db.model.WmSysConfigKey;
-import com.main.facade.base.BaseFacade;
 
 @Service
 @Scope("prototype")
@@ -69,9 +71,12 @@ public class TemplateFacade extends BaseFacade {
 		
 	}
 	
-	public List<HashMap<String, Object>> getGridData() {
-		
-		return objDB.selectPageList("com.template.service.configList.getConfigList", null, pageNum, pageSize);
+	public List<HashMap<String, Object>> getGridData() throws Exception {
+		List<HashMap<String, Object>> data1 = objDB.selectPageList("com.template.service.configList.getConfigList", null, pageNum, pageSize);
+//		PageInfo page = new PageInfo(data1);
+//		System.out.println("->>>" + data1.size());
+//		System.out.println("->>>" + page.getTotal());
+		return data1;
 		
 	}
 }

@@ -8,7 +8,8 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.main.facade.base.BaseFacade;
+import com.main.base.BaseFacade;
+
 
 @Aspect
 public class FacadeAOP {

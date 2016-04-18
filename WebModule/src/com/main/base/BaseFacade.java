@@ -1,4 +1,4 @@
-package com.main.facade.base;
+package com.main.base;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.main.db.base.DBAccess;
+import com.main.base.DBAccess;
 import com.main.util.WebModuleUtil;
 
 public class BaseFacade {
