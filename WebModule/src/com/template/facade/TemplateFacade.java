@@ -72,11 +72,8 @@ public class TemplateFacade extends BaseFacade {
 	}
 	
 	public List<HashMap<String, Object>> getGridData() throws Exception {
-		List<HashMap<String, Object>> data1 = objDB.selectPageList("com.template.service.configList.getConfigList", null, pageNum, pageSize);
-//		PageInfo page = new PageInfo(data1);
-//		System.out.println("->>>" + data1.size());
-//		System.out.println("->>>" + page.getTotal());
-		return data1;
+		
+		return objDB.selectPageList("com.template.service.configList.getConfigJoinCodeList", null, pageNum, pageSize);
 		
 	}
 }

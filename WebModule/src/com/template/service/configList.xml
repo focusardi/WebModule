@@ -10,4 +10,16 @@
 		</where>
 		ORDER BY CONFIG_NAME
 	</select>
+	
+	<select id="getConfigJoinCodeList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT CONFIG_NAME, CONFIG_VALUE FROM WM_SYS_CONFIG A1
+		LEFT JOIN WM_SYS_CODE A2 ON A1.CONFIG_NAME = A2.CODE_VALUE
+		<where>
+			<if test="CONFIG_NAME != null and CONFIG_NAME != ''">
+				AND A1.CONFIG_NAME = #{CONFIG_NAME}
+			</if>
+		</where>
+		ORDER BY A1.CONFIG_NAME
+	</select>
+	
 </mapper>
