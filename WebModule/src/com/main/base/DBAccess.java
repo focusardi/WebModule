@@ -14,11 +14,11 @@ import com.github.pagehelper.PageInfo;
 public class DBAccess {
 	
 	@Autowired
-	SqlSessionFactory sqlSessionFactoryCustom;
+	SqlSessionFactory sqlSessionFactory;
 	
 	public List<HashMap<String, Object>> selectList(String nameSpace, HashMap<String, Object> parameterMap) throws Exception {
 		
-		SqlSession session = sqlSessionFactoryCustom.openSession();
+		SqlSession session = sqlSessionFactory.openSession();
 		
 		//return session.selectList(nameSpace, parameterMap, new RowBounds(1,15));
 		List<HashMap<String, Object>> returnData = session.selectList(nameSpace, parameterMap);
@@ -27,7 +27,7 @@ public class DBAccess {
 	}
 	
 	public List<HashMap<String, Object>> selectPageList(String nameSpace, HashMap<String, Object> parameterMap, int pageNum, int pageSize) throws Exception {
-		SqlSession session = sqlSessionFactoryCustom.openSession();
+		SqlSession session = sqlSessionFactory.openSession();
 		List<HashMap<String, Object>> returnData = null;
 		
 		try {

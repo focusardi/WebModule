@@ -60,19 +60,26 @@
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property ref="dataSource" name="dataSource" />
-		<property name="mapperLocations"
-			value="classpath*:com/main/db/sqlxml/*Mapper.xml" />			
+		<!-- <property name="mapperLocations"
+			value="classpath*:com/main/db/sqlxml/*Mapper.xml" /> -->			
+		<property name="mapperLocations">
+			<list>
+				<value>classpath*:com/main/db/sqlxml/*Mapper.xml</value>
+				<value>classpath*:com/template/service/*.xml</value>
+			</list>			
+		</property>	
+			
 		<property name="configLocation" value="/WEB-INF/conf/mybatis-config.xml" />				
 	</bean>
 	
 	<!-- scan for mappers and let them be autowired -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-		<property name="basePackage" value="com.main.db.dao" />
+		<property name="basePackage" value="com.main.db.dao;com.main.base" />		
 	</bean> 
 	
 	
-	<bean id="sqlSessionFactoryCustom" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<!-- <bean id="sqlSessionFactoryCustom" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property ref="dataSource" name="dataSource" />
 		<property name="mapperLocations"
 			value="classpath*:com/template/service/*.xml" />
@@ -82,6 +89,6 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryCustom" />
 		<property name="basePackage" value="com.main.base" />
-	</bean>
+	</bean> -->
 	
 </beans>
