@@ -65,4 +65,9 @@ public class TemplateController extends BaseController {
 	public ModelAndView gradleTest(HttpServletRequest request, HttpServletResponse response) throws Exception {		
 		return new ModelAndView("template/gradleTest");		
 	}
+	
+	@RequestMapping("/grid2")
+	public ModelAndView grid2(HttpServletRequest request, HttpServletResponse response) throws Exception {		
+		return new ModelAndView("template/grid2", "message", "123");		
+	}
 }
