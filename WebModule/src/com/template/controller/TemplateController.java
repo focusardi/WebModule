@@ -70,4 +70,9 @@ public class TemplateController extends BaseController {
 	public ModelAndView grid2(HttpServletRequest request, HttpServletResponse response) throws Exception {		
 		return new ModelAndView("template/grid2", "message", "123");		
 	}
+	
+	@RequestMapping("/grid3")
+	public ModelAndView grid3(HttpServletRequest request, HttpServletResponse response) throws Exception {		
+		return new ModelAndView("template/grid3", "returnJson", returnJsonList(templateFacade.getGridData()));		
+	}
 }
