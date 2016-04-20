@@ -5,7 +5,51 @@
 <%@include file="../../resources/pages/gridbase.jsp"%>
 <script type="text/babel">
 
+window.WMGridTitle = React.createClass({	
+	render: function() {	
+		return (
+			<tr>
+				<td>項次</td>
+				<td>參數名稱</td>
+				<td>參數數值</td>
+				<td>參數描述</td>
+			</tr>
+		);
+	}
+});
 
+
+
+window.WMGridRow = React.createClass({		
+	render: function() {
+		var dataMap = this.props.dataMap;				
+		return (
+			<tr>
+				<td>{this.props.index}</td>
+				<td>{dataMap.CONFIG_NAME}</td>
+				<td>{dataMap.CONFIG_VALUE}</td>
+				<td>{dataMap.CONFIG_DESCRIPTION}</td>
+			</tr>
+		);
+	}
+});
+ReactDOM.render(
+  <WMSearchForm />,
+  document.getElementById('content')
+);
 </script>
 
-<div id="content"></div>
+<script type="text/javascript">
+	
+</script>
+
+
+<div id="content">
+
+
+
+
+
+
+
+</div>

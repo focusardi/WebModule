@@ -73,6 +73,6 @@ public class TemplateController extends BaseController {
 	
 	@RequestMapping("/grid3")
 	public ModelAndView grid3(HttpServletRequest request, HttpServletResponse response) throws Exception {		
-		return new ModelAndView("template/grid3", "returnJson", returnJsonList(templateFacade.getGridData()));		
+		return new ModelAndView("template/grid3", "data", returnJsonList(templateFacade.getGridData()));		
 	}
 }

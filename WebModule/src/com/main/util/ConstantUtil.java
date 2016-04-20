@@ -9,4 +9,10 @@ public class ConstantUtil {
 	
 	public static final String WebModule = "wm";
 	
+	
+	public class WMConstantGrid {
+		public static final String PAGEDATA = "pageDataCountAOP";
+		public static final String PAGETOTAL = "pageTotalAOP";
+		public static final String PAGENUMBER = "pageNumberAOP";
+	}
 }

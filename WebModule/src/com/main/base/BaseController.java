@@ -12,7 +12,7 @@ import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
 
 public class BaseController {
-	
+	//varargs
 	public String returnJsonList(List<HashMap<String, Object>> dataList) {
 		
 		JSONObject returnObject = new JSONObject();
@@ -23,6 +23,8 @@ public class BaseController {
 		returnObject.put("pageTotal", request.getAttribute("pageTotalAOP"));
 		returnObject.put("pageNumber", request.getAttribute("pageNumberAOP"));
 
+		
+		
 		return returnObject.toString();
 	}
 }
