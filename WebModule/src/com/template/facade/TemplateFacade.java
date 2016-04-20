@@ -90,6 +90,10 @@ public class TemplateFacade extends BaseFacade {
 		parameterMap.put("list", batchList);
 		objDB.update("com.template.service.configList.updateConfigBatchTest", parameterMap);
 		
+		//store procedure test
+		HashMap<String, Object> spMap= new HashMap<String, Object>();
+		spMap.put("CONFIG_NAME", "AP_NAME17");
+		objDB.update("com.template.service.configList.updateStoreProcedure", spMap);
 		
 		return objDB.selectPageList("com.template.service.configList.getConfigJoinCodeList", null, pageNum, pageSize);
 		

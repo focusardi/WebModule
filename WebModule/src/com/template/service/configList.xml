@@ -49,4 +49,9 @@
 		</foreach>
 		
 	</update>
+	
+	<update id = "updateStoreProcedure" parameterType="java.util.HashMap">
+		CALL PROCEDURE_TEST(#{CONFIG_NAME})
+	</update>
+	
 </mapper>
