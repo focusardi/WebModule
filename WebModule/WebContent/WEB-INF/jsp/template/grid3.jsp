@@ -8,7 +8,7 @@
 window.WMGridTitle = React.createClass({	
 	render: function() {	
 		return (
-			<tr>
+			<tr className="listHeader">
 				<td>項次</td>
 				<td>參數名稱</td>
 				<td>參數數值</td>
@@ -18,13 +18,11 @@ window.WMGridTitle = React.createClass({
 	}
 });
 
-
-
 window.WMGridRow = React.createClass({		
 	render: function() {
 		var dataMap = this.props.dataMap;				
 		return (
-			<tr>
+			<tr className={this.props.trClass}  >
 				<td>{this.props.index}</td>
 				<td>{dataMap.CONFIG_NAME}</td>
 				<td>{dataMap.CONFIG_VALUE}</td>
@@ -33,9 +31,10 @@ window.WMGridRow = React.createClass({
 		);
 	}
 });
+
 ReactDOM.render(
   <WMSearchForm />,
-  document.getElementById('content')
+  document.getElementById('WMSearchForm')
 );
 </script>
 
@@ -45,11 +44,6 @@ ReactDOM.render(
 
 
 <div id="content">
-
-
-
-
-
-
-
+<form id="WMSearchForm">	
+</form>
 </div>

@@ -2,10 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <script type="text/javascript">
 	function selectGridTool(value) {
 		console.log(value);
+	}
+	
+	function searchSumbit() {
+		console.log("submit");
 	}
 </script>
 
@@ -51,10 +54,11 @@ window.WMGridBlock = React.createClass({
 		var data = ${data};
 		var dataNodes = data.pageData.map(function(dataMap, index) {
 			
-			var trClass = "oldClass";
+			var trClass = "listColor01";
 			if (index%2 != 0) {
-				trClass = "evenClass"
-			}						
+				trClass = "listColor02"
+			}
+									
 			return (
 				<WMGridRow dataMap={dataMap} index={index+1} trClass={trClass} />
 			);
@@ -63,7 +67,7 @@ window.WMGridBlock = React.createClass({
 		return (
 			<div id="WMGridBlock">						
 				<WMGridTool />
-				<table>
+				<table className="box1" >
 					<WMGridTitle />
 					{dataNodes}
 				</table>
@@ -76,10 +80,10 @@ window.WMGridBlock = React.createClass({
 window.WMSearchForm = React.createClass({
 	render: function() {				
 		return (
-			<form id="WMSearchForm">						
+			<div>						
 				<WMSearchBlock />
 				<WMGridBlock />
-			</form>
+			</div>
 		);
 	}
 });
