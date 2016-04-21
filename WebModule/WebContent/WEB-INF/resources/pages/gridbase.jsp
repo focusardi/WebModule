@@ -5,6 +5,9 @@
 <script type="text/javascript">
 	function selectGridTool(value) {
 		console.log(value);
+		//$("#searchPageSize").
+		$("#seachPageNum").val(value);
+		$("#WMSearchForm").submit();
 	}
 	
 	function searchSumbit() {
@@ -19,7 +22,8 @@ window.WMGridTool = React.createClass({
 			<div>						
 				<a href="javascript:void(0);"><img src="<c:url value="/resources/images/gridtool/page-first.gif" />" /></a>
 				<a href="javascript:void(0);"><img src="<c:url value="/resources/images/gridtool/page-prev.gif" />" /></a>
-				<WMGridToolSelect />
+				<WMGridToolSelect pageTotal={this.props.pageTotal} pageNumber={this.props.pageNumber} />
+				/{this.props.pageTotal}頁，共{this.props.pageTotalCount}筆
 				<a href="javascript:void(0);"><img src="<c:url value="/resources/images/gridtool/page-next.gif" />" /></a>
 				<a href="javascript:void(0);"><img src="<c:url value="/resources/images/gridtool/page-last.gif" />" /></a>
 			</div>
@@ -29,19 +33,27 @@ window.WMGridTool = React.createClass({
 
 window.WMGridToolSelect = React.createClass({
 
-	selectHandler:function(e) {		
+	selectHandler:function(e) {
+		//this.options[this.selectedIndex].value		
 		selectGridTool(e.target.options[e.target.selectedIndex].value);
 	},
 
 	render: function() {
-		//this.options[this.selectedIndex].value
+		
+		var optionRows = [];
+		for (var i=1; i <= this.props.pageTotal; i++) {
+			if (i == this.props.pageNumber) {
+				optionRows.push(<option value={i} selected>{i}</option>);
+			} else {
+				optionRows.push(<option value={i}>{i}</option>);
+			}
+    		
+		}
+
 		return(
-
-			React.createElement("select", {onChange:this.selectHandler}
-				,<option value="1">1</option>,<option value="2">2</option>
-
-
-			)
+			React.createElement("select", {onChange:this.selectHandler, name:"gridtoolSelect"}
+				,optionRows
+			)			
 		);
 	}
 
@@ -52,6 +64,7 @@ window.WMGridBlock = React.createClass({
 	render: function() {
 
 		var data = ${data};
+		//console.log(data);
 		var dataNodes = data.pageData.map(function(dataMap, index) {
 			
 			var trClass = "listColor01";
@@ -66,12 +79,12 @@ window.WMGridBlock = React.createClass({
 		
 		return (
 			<div id="WMGridBlock">						
-				<WMGridTool />
+				<WMGridTool pageTotal={data.pageTotal} pageNumber={data.pageNumber} pageTotalCount={data.pageTotalCount} />
 				<table className="box1" >
 					<WMGridTitle />
 					{dataNodes}
 				</table>
-				<WMGridTool />
+				<WMGridTool pageTotal={data.pageTotal} pageNumber={data.pageNumber} pageTotalCount={data.pageTotalCount} />
 			</div>
 		);
 	}
@@ -80,10 +93,14 @@ window.WMGridBlock = React.createClass({
 window.WMSearchForm = React.createClass({
 	render: function() {				
 		return (
-			<div>						
+			<div>
+			<form id="WMSearchForm" action={this.props.action} method="post" >	
+				<input type="hidden" name="pageSize" id="searchPageSize" value="10"/>
+				<input type="hidden" name="pageNum" id="seachPageNum" />
 				<WMSearchBlock />
+			</form>
 				<WMGridBlock />
-			</div>
+			</div>	
 		);
 	}
 });
@@ -91,12 +108,22 @@ window.WMSearchForm = React.createClass({
 window.WMSearchBlock = React.createClass({
 	render: function() {		
 		return (
-			<div id="WMSearchBlock">						
-				
+			<div id="WMSearchBlock" className="panelSearch" >						
+				<WMSearchTable />
 			</div>
 		);
 	}
 });
 
-
+window.WMSearchButton = React.createClass({
+	render: function() {		
+		return (
+			<div className="btnarea">
+				<div className="list_btn">
+					<button type={this.props.type}>{this.props.value}</button>
+				</div>
+			</div>
+		);
+	}
+});
 </script>

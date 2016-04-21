@@ -95,7 +95,7 @@ public class TemplateFacade extends BaseFacade {
 		spMap.put("CONFIG_NAME", "AP_NAME17");
 		objDB.update("com.template.service.configList.updateStoreProcedure", spMap);
 		
-		return objDB.selectPageList("com.template.service.configList.getConfigJoinCodeList", null, pageNum, pageSize);
+		return objDB.selectPageList("com.template.service.configList.getConfigJoinCodeList", getRequestMap(), pageNum, pageSize);
 		
 	}
 }

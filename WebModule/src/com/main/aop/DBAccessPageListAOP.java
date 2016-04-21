@@ -40,8 +40,12 @@ public class DBAccessPageListAOP {
 		
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();		
 		request.setAttribute("pageDataCountAOP", page.getPageSize());
-		request.setAttribute("pageTotalAOP", page.getLastPage());
+		request.setAttribute("pageTotalCountAOP", page.getTotal());
+		request.setAttribute("pageTotalAOP", page.getNavigatePages() + 1);
 		request.setAttribute("pageNumberAOP", page.getPageNum());
+		int[] a = page.getNavigatepageNums();
+		int b = page.getNavigatePages();
+		int c = page.getLastPage();
 		
 		System.out.println("selectPageList AoP================================================END");			
 		return o;

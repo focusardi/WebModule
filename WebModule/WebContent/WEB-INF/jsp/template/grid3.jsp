@@ -5,6 +5,22 @@
 <%@include file="../../resources/pages/gridbase.jsp"%>
 <script type="text/babel">
 
+window.WMSearchTable = React.createClass({
+	render: function() {		
+		return (
+			<table className="boxSearch" >
+				
+				<tr className="searchOption">
+				<td>參數名稱</td>
+				<td><input name="CONFIG_NAME" value={this.props.CONFIG_NAME} /></td>
+				<td><WMSearchButton type="sumbit" value="查詢" /></td>
+				</tr>
+			
+			</table>
+		);
+	}
+});
+
 window.WMGridTitle = React.createClass({	
 	render: function() {	
 		return (
@@ -33,8 +49,8 @@ window.WMGridRow = React.createClass({
 });
 
 ReactDOM.render(
-  <WMSearchForm />,
-  document.getElementById('WMSearchForm')
+  <WMSearchForm action="grid3" />,
+  document.getElementById('content')
 );
 </script>
 
@@ -44,6 +60,5 @@ ReactDOM.render(
 
 
 <div id="content">
-<form id="WMSearchForm">	
-</form>
+
 </div>

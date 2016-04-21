@@ -1,5 +1,6 @@
 package com.main.base;
 
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,10 +20,20 @@ public class BaseController {
 		returnObject.put("pageData", JSONSerializer.toJSON(dataList));
 
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+		
+		Enumeration<String> attrs =  request.getAttributeNames();
+		while(attrs.hasMoreElements()) {
+			String attrName = attrs.nextElement();			
+			returnObject.put(attrName, request.getAttribute(attrName).toString());
+		}
+		
 		returnObject.put("pageDataCount", request.getAttribute("pageDataCountAOP"));
 		returnObject.put("pageTotal", request.getAttribute("pageTotalAOP"));
 		returnObject.put("pageNumber", request.getAttribute("pageNumberAOP"));
-
+		returnObject.put("pageTotalCount", request.getAttribute("pageTotalCountAOP"));
+		
+		
+		
 		
 		
 		return returnObject.toString();
