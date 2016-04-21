@@ -36,7 +36,8 @@ window.WMGridTitle = React.createClass({
 
 window.WMGridRow = React.createClass({		
 	render: function() {
-		var dataMap = this.props.dataMap;				
+		var dataMap = this.props.dataMap;
+						
 		return (
 			<tr className={this.props.trClass}  >
 				<td>{this.props.index}</td>
