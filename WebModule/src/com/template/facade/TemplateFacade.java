@@ -32,7 +32,7 @@ public class TemplateFacade extends BaseFacade {
 			
 		} else {
 			System.out.println(request);
-			System.out.println(requestMap);			
+					
 			System.out.println(request.getParameter("pageNum"));
 			System.out.println(getParameter("pageNum"));
 			
@@ -75,27 +75,27 @@ public class TemplateFacade extends BaseFacade {
 	
 	public List<HashMap<String, Object>> getGridData() throws Exception {
 		
-		//AP_NAME10
-		HashMap<String, Object> parameterMap= new HashMap<String, Object>();
-		parameterMap.put("CONFIG_NAME", "AP_NAME10");
-		parameterMap.put("CONFIG_VALUE", "<script>alert(\"123\");</script>");
-		parameterMap.put("CONFIG_DESCRIPTION", null);
-		objDB.update("com.template.service.configList.updateConfigTest", parameterMap);
+//		//AP_NAME10
+//		HashMap<String, Object> parameterMap= new HashMap<String, Object>();
+//		parameterMap.put("CONFIG_NAME", "AP_NAME10");
+//		parameterMap.put("CONFIG_VALUE", "<script>alert(\"123\");</script>");
+//		parameterMap.put("CONFIG_DESCRIPTION", null);
+//		objDB.update("com.template.service.configList.updateConfigTest", parameterMap);
+//		
+//		
+//		//batch test
+//		List<String> batchList = new ArrayList<String>();
+//		batchList.add("AP_NAME13");
+//		batchList.add("AP_NAME14");
+//		parameterMap.put("list", batchList);
+//		objDB.update("com.template.service.configList.updateConfigBatchTest", parameterMap);
+//		
+//		//store procedure test
+//		HashMap<String, Object> spMap= new HashMap<String, Object>();
+//		spMap.put("CONFIG_NAME", "AP_NAME17");
+//		objDB.update("com.template.service.configList.updateStoreProcedure", spMap);
 		
-		
-		//batch test
-		List<String> batchList = new ArrayList<String>();
-		batchList.add("AP_NAME13");
-		batchList.add("AP_NAME14");
-		parameterMap.put("list", batchList);
-		objDB.update("com.template.service.configList.updateConfigBatchTest", parameterMap);
-		
-		//store procedure test
-		HashMap<String, Object> spMap= new HashMap<String, Object>();
-		spMap.put("CONFIG_NAME", "AP_NAME17");
-		objDB.update("com.template.service.configList.updateStoreProcedure", spMap);
-		
-		return objDB.selectPageList("com.template.service.configList.getConfigJoinCodeList", getRequestMap(), pageNum, pageSize);
+		return objDB.selectPageList("com.template.service.configList.getConfigList", getRequestMap(), pageNum, pageSize);
 		
 	}
 }

@@ -18,12 +18,12 @@ public class BaseFacade {
 	@Autowired
 	protected DBAccess objDB;
 	
-	protected HttpServletRequest request;
+	public HttpServletRequest request;
 	
-	protected int pageNum = 0;	
-	protected int pageSize = 10;
+	public int pageNum = 1;	
+	public int pageSize = 10;
 	
-	protected HashMap<String, Object> requestMap;
+	private HashMap<String, Object> requestMap;
 
 	public void setRequest(HttpServletRequest request) {
 		this.request = request;		
