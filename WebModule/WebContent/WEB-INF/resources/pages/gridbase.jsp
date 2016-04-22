@@ -64,7 +64,8 @@ window.WMGridBlock = React.createClass({
 	render: function() {
 
 		var data = ${data};
-		//console.log(data);
+		console.log(data);
+		
 		var dataNodes = data.pageData.map(function(dataMap, index) {
 			
 			var trClass = "listColor01";

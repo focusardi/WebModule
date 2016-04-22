@@ -9,6 +9,7 @@ public class ConstantUtil {
 	
 	public static final String WebModule = "wm";
 	
+	public static final String QueryString = "queryString";
 	
 	public class WMConstantGrid {
 		public static final String PAGEDATA = "pageDataCountAOP";
