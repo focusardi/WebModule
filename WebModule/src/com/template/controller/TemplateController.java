@@ -75,4 +75,13 @@ public class TemplateController extends BaseController {
 	public ModelAndView grid3(HttpServletRequest request, HttpServletResponse response) throws Exception {		
 		return new ModelAndView("template/grid3", "data", returnJsonList(templateFacade.getGridData()));		
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/mobileData")	
+	public String mobileData(HttpServletRequest request, HttpServletResponse response) throws Exception {		
+		String returnString = "{ \"HEADER\": { \"LEFT\": \"上一頁\", \"LEFT_URL\": \"back\", \"HEADER_NAME\": \"授課大綱\" }, \"MENU\": [ { \"NAME\": \"104學年度下學期\", \"URL\": \"Icon4.aspx?p=P3&ayearsms=1042\", \"BACKGROUND_COLOR\": \"#1490C1\", \"TEXT_COLOR\": \"#FFFFFF\" }, { \"NAME\": \"104學年度上學期\", \"URL\": \"Icon4.aspx?p=P3&ayearsms=1041\", \"BACKGROUND_COLOR\": \"#1490C1\", \"TEXT_COLOR\": \"#FFFFFF\" }, { \"NAME\": \"103學年度下學期\", \"URL\": \"Icon4.aspx?p=P3&ayearsms=1032\", \"BACKGROUND_COLOR\": \"#1490C1\", \"TEXT_COLOR\": \"#FFFFFF\" }, { \"NAME\": \"103學年度上學期\", \"URL\": \"Icon4.aspx?p=P3&ayearsms=1031\", \"BACKGROUND_COLOR\": \"#1490C1\", \"TEXT_COLOR\": \"#FFFFFF\" }, { \"NAME\": \"102學年度下學期\", \"URL\": \"Icon4.aspx?p=P3&ayearsms=1022\", \"BACKGROUND_COLOR\": \"#1490C1\", \"TEXT_COLOR\": \"#FFFFFF\" }, { \"NAME\": \"102學年度上學期\", \"URL\": \"Icon4.aspx?p=P3&ayearsms=1021\", \"BACKGROUND_COLOR\": \"#1490C1\", \"TEXT_COLOR\": \"#FFFFFF\" }, { \"NAME\": \"101學年度下學期\", \"URL\": \"Icon4.aspx?p=P3&ayearsms=1012\", \"BACKGROUND_COLOR\": \"#1490C1\", \"TEXT_COLOR\": \"#FFFFFF\" }, { \"NAME\": \"101學年度上學期\", \"URL\": \"Icon4.aspx?p=P3&ayearsms=1011\", \"BACKGROUND_COLOR\": \"#1490C1\", \"TEXT_COLOR\": \"#FFFFFF\" }, { \"NAME\": \"100學年度下學期\", \"URL\": \"Icon4.aspx?p=P3&ayearsms=1002\", \"BACKGROUND_COLOR\": \"#1490C1\", \"TEXT_COLOR\": \"#FFFFFF\" }, { \"NAME\": \"100學年度上學期\", \"URL\": \"Icon4.aspx?p=P3&ayearsms=1001\", \"BACKGROUND_COLOR\": \"#1490C1\", \"TEXT_COLOR\": \"#FFFFFF\" } ], \"SUBJECT\": { \"NAME\": \"請選擇學年期\", \"TEXT_COLOR\": \"#34ADDC\", \"BACKGROUND_COLOR\": \"#FFFFFF\", \"BORDER_COLOR\": \"#34ADDC\" } }";
+		return returnString;
+	}
+	
 }
