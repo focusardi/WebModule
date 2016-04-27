@@ -42,7 +42,7 @@
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/WEB-INF/jsp/" />
-		<property name="suffix" value=".jsp" />
+		<property name="suffix" value=".jsp" />		
 	</bean>
 
 	
@@ -51,11 +51,10 @@
 	<!-- <mvc:annotation-driven /> -->
 	
 	<mvc:annotation-driven>  
-		<mvc:message-converters register-defaults="true">
-		<!-- response string強制轉UTF-8 -->  
+		<!-- <mvc:message-converters register-defaults="true">
+		response string強制轉UTF-8  
 		<bean class="com.main.misc.UTF8StringHttpMessageConverter"/>  
-		</mvc:message-converters>  
+		</mvc:message-converters>   -->
 	</mvc:annotation-driven>  
-	
 	
 </beans>
