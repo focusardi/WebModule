@@ -10,7 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.util.StreamUtils;
 
-//reponse string強制轉UTF-8
+//response string強制轉UTF-8
 
 public class UTF8StringHttpMessageConverter extends StringHttpMessageConverter {  
 	  

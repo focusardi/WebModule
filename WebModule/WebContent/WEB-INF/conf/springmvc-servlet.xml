@@ -52,7 +52,7 @@
 	
 	<mvc:annotation-driven>  
 		<mvc:message-converters register-defaults="true">
-		<!-- reponse string強制轉UTF-8 -->  
+		<!-- response string強制轉UTF-8 -->  
 		<bean class="com.main.misc.UTF8StringHttpMessageConverter"/>  
 		</mvc:message-converters>  
 	</mvc:annotation-driven>  
