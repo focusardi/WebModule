@@ -7,10 +7,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageInfo;
 import com.main.base.BaseFacade;
+import com.main.db.dao.WmSysCodeMapper;
 import com.main.db.dao.WmSysConfigMapper;
+import com.main.db.model.WmSysCode;
 import com.main.db.model.WmSysConfig;
 import com.main.db.model.WmSysConfigExample;
 import com.main.db.model.WmSysConfigKey;
@@ -22,9 +26,14 @@ public class TemplateFacade extends BaseFacade {
 	@Autowired
 	WmSysConfigMapper wmSysConfigMapper;
 	
+	@Autowired
+	WmSysCodeMapper wmSysCodeMapper;
+	
+	
 //	@Autowired
 //	SqlSessionFactory sqlSessionFactoryCustom;
 	
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void doList() throws Exception {
 		System.out.println("TemplateFacade");
 		if (request == null) {
@@ -54,6 +63,12 @@ public class TemplateFacade extends BaseFacade {
 		int r = wmSysConfigMapper.insert(inRecord);
 		System.out.println("insert:" + r);
 		
+		//test(inRecord);
+		
+		if (r > 0) {
+			throw new Exception("123");
+		}
+		
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		//map.put("CONFIG_NAME", "AP_NAME");
@@ -66,11 +81,29 @@ public class TemplateFacade extends BaseFacade {
 		
 		System.out.println(reList.size());
 		
-		test();
 	}
 	
-	public void test() {
+	//@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public void test(WmSysConfig inRecord) throws Exception {
 		
+		//wmSysCodeMapper.
+		WmSysCode c = new WmSysCode();
+		c.setCodeName("TRANS_TEST");
+		c.setCodeValue("3");
+		c.setCodeText("aaaa");
+		c.setCodeSeq(1);
+		wmSysCodeMapper.insert(c);
+		
+		inRecord.setConfigName("AP_NAMET11");
+		int a = Integer.parseInt("fe");
+		int r =  wmSysConfigMapper.insert(inRecord);
+		
+		System.out.println("insert test:" + r);
+		if (r > 0) {
+			r = Integer.parseInt("fe");
+			throw new Exception("123TT");
+		}
+		//return r;
 	}
 	
 	public List<HashMap<String, Object>> getGridData() throws Exception {

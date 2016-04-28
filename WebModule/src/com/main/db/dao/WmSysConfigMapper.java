@@ -5,6 +5,8 @@ import com.main.db.model.WmSysConfigExample;
 import com.main.db.model.WmSysConfigKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.transaction.annotation.Transactional;
+
 
 public interface WmSysConfigMapper {
     /**

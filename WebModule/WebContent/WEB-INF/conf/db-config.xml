@@ -69,7 +69,8 @@
 			</list>			
 		</property>	
 			
-		<property name="configLocation" value="/WEB-INF/conf/mybatis-config.xml" />				
+		<property name="configLocation" value="/WEB-INF/conf/mybatis-config.xml" />
+					
 	</bean>
 	
 	<!-- scan for mappers and let them be autowired -->

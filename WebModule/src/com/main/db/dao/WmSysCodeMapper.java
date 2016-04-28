@@ -5,6 +5,8 @@ import com.main.db.model.WmSysCodeExample;
 import com.main.db.model.WmSysCodeKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface WmSysCodeMapper {
     /**

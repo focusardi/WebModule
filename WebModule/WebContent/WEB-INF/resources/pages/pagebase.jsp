@@ -9,6 +9,7 @@
 <script src="<c:url value="/resources/js/react-dom-server.min.js" />"></script>
 <script src="<c:url value="/resources/js/react-with-addons.min.js" />"></script>
 <script src="<c:url value="/resources/js/browser-5.8.24.min.js" />"></script>
+<script src="<c:url value="/resources/js/griddle-0.5.0.js" />"></script>
 
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/default.css" />" >
 <%
