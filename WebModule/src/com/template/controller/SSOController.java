@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,8 +30,8 @@ public class SSOController extends BaseController {
 	TemplateFacade templateFacade;
 	
 	@RequestMapping("/welcome")
-	public ModelAndView helloWorld(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("123333");
+	public ModelAndView helloWorld(@CookieValue(value = "clutureSSO",required = false) String clutureSSOCookie, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println(">> " + clutureSSOCookie);
 		
 		String message = "<br><div style='text-align:center;'>"
 				+ "<h3>Hello World, Spring MVC Tutorial</h3></div><br><br>";
@@ -45,12 +46,26 @@ public class SSOController extends BaseController {
 		System.out.println(request.getParameter("account"));
 		System.out.println(request.getParameter("password"));
 		
-		Cookie ssoCookie = new Cookie("clutureSSO", "123456");
+		
+		Cookie ssoCookie = new Cookie("clutureSSO", "4123");		
 		response.addCookie(ssoCookie);
+		
 		
 		return new ModelAndView("redirect:http://127.0.0.1:8080/MOCWEB_RWD/CHCSEC/portal/FrontMember/B0106MAction");
 		
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/getToken", produces = "text/plain;charset=UTF-8")	
+	public String getToken(HttpServletRequest request, HttpServletResponse response) throws Exception {		
+		
+		System.out.println("getToken mcAuthCode:" + request.getParameter("mcAuthCode"));
+		
+		String returnString = "{ \"mcAuthToken\":\"AUTHTTTTOKEN" + request.getParameter("mcAuthCode") + "\"}";
+				
+		return returnString;
+	}
+	
 	
 	
 }
