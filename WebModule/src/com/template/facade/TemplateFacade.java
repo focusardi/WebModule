@@ -64,10 +64,10 @@ public class TemplateFacade extends BaseFacade {
 		System.out.println("insert:" + r);
 		
 		//test(inRecord);
-		
-		if (r > 0) {
-			throw new Exception("123");
-		}
+//		
+//		if (r > 0) {
+//			throw new Exception("123");
+//		}
 		
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -83,27 +83,32 @@ public class TemplateFacade extends BaseFacade {
 		
 	}
 	
-	//@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-	public void test(WmSysConfig inRecord) throws Exception {
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public void test() throws Exception {
 		
 		//wmSysCodeMapper.
 		WmSysCode c = new WmSysCode();
 		c.setCodeName("TRANS_TEST");
-		c.setCodeValue("3");
+		c.setCodeValue("4");
 		c.setCodeText("aaaa");
 		c.setCodeSeq(1);
 		wmSysCodeMapper.insert(c);
 		
-		inRecord.setConfigName("AP_NAMET11");
-		int a = Integer.parseInt("fe");
-		int r =  wmSysConfigMapper.insert(inRecord);
+		int a = Integer.parseInt("fe");		
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public void test2() throws Exception {
 		
-		System.out.println("insert test:" + r);
-		if (r > 0) {
-			r = Integer.parseInt("fe");
-			throw new Exception("123TT");
-		}
-		//return r;
+		//wmSysCodeMapper.
+		WmSysCode c = new WmSysCode();
+		c.setCodeName("TRANS_TEST");
+		c.setCodeValue("5");
+		c.setCodeText("aaaa");
+		c.setCodeSeq(1);
+		wmSysCodeMapper.insert(c);
+		
+		int a = Integer.parseInt("fe");		
 	}
 	
 	public List<HashMap<String, Object>> getGridData() throws Exception {
