@@ -51,7 +51,7 @@ public class SSOController extends BaseController {
 		response.addCookie(ssoCookie);
 		
 		
-		return new ModelAndView("redirect:http://127.0.0.1:8080/MOCWEB_RWD/CHCSEC/portal/FrontMember/B0106MAction");
+		return new ModelAndView("redirect:http://127.0.0.1:8080/MOCWEB_RWD/CHCSEC/portal/FrontMember/B0106MAction?mcAuthCode=code1234");
 		
 	}
 	
