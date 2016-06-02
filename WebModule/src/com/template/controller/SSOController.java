@@ -56,12 +56,12 @@ public class SSOController extends BaseController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/getToken", produces = "text/plain;charset=UTF-8")	
+	@RequestMapping(value = "/getToken", produces = "application/json;charset=UTF-8")	
 	public String getToken(HttpServletRequest request, HttpServletResponse response) throws Exception {		
 		
-		System.out.println("getToken mcAuthCode:" + request.getParameter("mcAuthCode"));
+		//System.out.println("getToken mcAuthCode:" + request.getParameter("mcAuthCode"));
 		
-		String returnString = "{ \"mcAuthToken\":\"AUTHTTTTOKEN" + request.getParameter("mcAuthCode") + "\"}";
+		String returnString = "{\"mcAuthToken\":\"AUTHTTTTOKEN" + request.getParameter("mcAuthCode") + "\"}";
 				
 		return returnString;
 	}
