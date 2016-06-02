@@ -31,9 +31,6 @@ public class SSOController extends BaseController {
 	@RequestMapping("/welcome")
 	public ModelAndView helloWorld(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("123333");
-		request.setAttribute("TEST", "TESTATT");
-		
-		templateFacade.doList();
 		
 		String message = "<br><div style='text-align:center;'>"
 				+ "<h3>Hello World, Spring MVC Tutorial</h3></div><br><br>";
