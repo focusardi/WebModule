@@ -142,6 +142,7 @@
 	</dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
+    <!-- xml include maven才會包 -->
     <resources>  
 	    <resource>  
 	        <directory>src</directory>  
