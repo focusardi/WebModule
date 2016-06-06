@@ -16,4 +16,6 @@ public class ConstantUtil {
 		public static final String PAGETOTAL = "pageTotalAOP";
 		public static final String PAGENUMBER = "pageNumberAOP";
 	}
+	
+	public static final String SSOCOOKIE = "clutureSSO";
 }

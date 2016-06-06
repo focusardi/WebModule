@@ -1,6 +1,10 @@
 package com.main.util;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,5 +48,38 @@ public class WebModuleUtil {
 			}			
 		}		
 		return dataMap;
+	}
+	
+	public static String getCurrentTWTime() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+		Date date = new Date();
+		
+		return convertTWDate(dateFormat.format(date), "yyyyMMddHHmmssSSS", "yyyMMddHHmmssSSS");
+	}
+
+	public static String getCurrentTWDate() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+		Date date = new Date();
+
+		return convertTWDate(dateFormat.format(date), "yyyyMMdd", "yyyMMdd");
+	}
+	
+	public static String convertTWDate(String AD, String beforeFormat, String afterFormat) {// 轉年月格式
+		if (AD == null)
+			return "";
+		java.text.SimpleDateFormat df4 = new java.text.SimpleDateFormat(beforeFormat);
+		java.text.SimpleDateFormat df2 = new java.text.SimpleDateFormat(afterFormat);
+		Calendar cal = Calendar.getInstance();
+		try {
+			cal.setTime(df4.parse(AD));
+			if (cal.get(Calendar.YEAR) > 1492)
+				cal.add(Calendar.YEAR, -1911);
+			else
+				cal.add(Calendar.YEAR, +1911);
+			return df2.format(cal.getTime());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

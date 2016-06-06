@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="login">
+${message}
+<form action="login" method="POST">
 account: <input type="text" name="account" /><br />
 password: <input type="password" name="password"><br />
 <input type="submit" value="登入" />

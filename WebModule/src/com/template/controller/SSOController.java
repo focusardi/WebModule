@@ -18,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageInfo;
 import com.main.base.BaseController;
 import com.main.base.BaseFacade;
+import com.main.util.ConstantUtil;
+import com.template.facade.SSOFacade;
 import com.template.facade.TemplateFacade;
 
 import net.sf.json.JSONSerializer;
@@ -27,10 +29,10 @@ import net.sf.json.JSONSerializer;
 public class SSOController extends BaseController {
 	
 	@Autowired
-	TemplateFacade templateFacade;
+	SSOFacade sSOFacade;
 	
 	@RequestMapping("/welcome")
-	public ModelAndView helloWorld(@CookieValue(value = "clutureSSO",required = false) String clutureSSOCookie, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView helloWorld(@CookieValue(value = ConstantUtil.SSOCOOKIE,required = false) String clutureSSOCookie, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(">> " + clutureSSOCookie);
 		
 		String message = "<br><div style='text-align:center;'>"
@@ -39,19 +41,25 @@ public class SSOController extends BaseController {
 		
 	}
 	
-	
 	@RequestMapping("/login")
-	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		System.out.println(request.getParameter("account"));
-		System.out.println(request.getParameter("password"));
+	public ModelAndView login(@CookieValue(value = ConstantUtil.SSOCOOKIE,required = false) String clutureSSOCookie, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		
-		Cookie ssoCookie = new Cookie("clutureSSO", "4123");		
-		response.addCookie(ssoCookie);
+		if (sSOFacade.validAccountPassword()) {
+			//登入成功
+			String authCode = sSOFacade.getAuthCode();
+			
+			String cookie = sSOFacade.getNewSSOCookie();
+			
+			Cookie ssoCookie = new Cookie(ConstantUtil.SSOCOOKIE, cookie);		
+			response.addCookie(ssoCookie);
+			
+			return new ModelAndView("redirect:http://127.0.0.1:8080/MOCWEB_RWD/CHCSEC/portal/FrontMember/B0106MAction?mcAuthCode=" + authCode);
+		} else {
+			//登入失敗
+			return new ModelAndView("sso/login", "message", "帳號密碼錯誤");
+		}
 		
-		
-		return new ModelAndView("redirect:http://127.0.0.1:8080/MOCWEB_RWD/CHCSEC/portal/FrontMember/B0106MAction?mcAuthCode=code1234");
 		
 	}
 	
@@ -78,7 +86,7 @@ public class SSOController extends BaseController {
 	}
 	
 	@RequestMapping("/ssoCheck")
-	public ModelAndView ssoCheck(@CookieValue(value = "clutureSSO",required = false) String clutureSSOCookie, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView ssoCheck(@CookieValue(value = ConstantUtil.SSOCOOKIE,required = false) String clutureSSOCookie, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		System.out.println("ssoCheck:>" + clutureSSOCookie);
 		
