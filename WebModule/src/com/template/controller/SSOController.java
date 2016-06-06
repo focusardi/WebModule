@@ -66,6 +66,24 @@ public class SSOController extends BaseController {
 		return returnString;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/getMemberInfo", produces = "application/json;charset=UTF-8")	
+	public String getMemberInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {		
+		
+		//System.out.println("getToken mcAuthCode:" + request.getParameter("mcAuthCode"));
+		
+		String returnString = "{\"idno\":\"A127385478\"}";
+				
+		return returnString;
+	}
 	
+	@RequestMapping("/ssoCheck")
+	public ModelAndView ssoCheck(@CookieValue(value = "clutureSSO",required = false) String clutureSSOCookie, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		System.out.println("ssoCheck:>" + clutureSSOCookie);
+		
+		return new ModelAndView("sso/ssoCheck");
+		
+	}
 	
 }
