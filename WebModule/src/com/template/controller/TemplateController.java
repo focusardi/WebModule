@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageInfo;
 import com.main.base.BaseController;
 import com.main.base.BaseFacade;
+import com.main.misc.SettingServlet;
 import com.template.facade.TemplateFacade;
 
 import net.sf.json.JSONSerializer;
@@ -32,6 +33,8 @@ public class TemplateController extends BaseController {
 		request.setAttribute("TEST", "TESTATT");
 		
 		templateFacade.doList();
+		
+		System.out.println(SettingServlet.getSysSetting("ARDI").getSysPassword());
 		
 		String message = "<br><div style='text-align:center;'>"
 				+ "<h3>Hello World, Spring MVC Tutorial</h3></div><br><br>";

@@ -75,4 +75,21 @@
 	    <url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
+	<!-- SettingServlet -->
+	<servlet>
+		<display-name>SettingServlet</display-name>
+		<servlet-name>SettingServlet</servlet-name>
+		<servlet-class>com.main.misc.SettingServlet</servlet-class>
+		<init-param>
+			<param-name>ap</param-name>
+			<param-value>shwoo_admin</param-value>
+		</init-param>
+		<load-on-startup>20</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SettingServlet</servlet-name>
+		<url-pattern>/SettingServlet</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
